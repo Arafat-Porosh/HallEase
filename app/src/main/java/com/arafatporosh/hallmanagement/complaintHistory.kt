@@ -25,8 +25,6 @@ class complaintHistory : AppCompatActivity() {
         complaintsRecyclerView.layoutManager = LinearLayoutManager(this)
         complaintsAdapter = ComplaintHistoryAdapter(complaintsList)
         complaintsRecyclerView.adapter = complaintsAdapter
-
-        // Fetch complaints from Firebase
         fetchComplaints()
     }
 
