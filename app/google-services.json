@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "48078542113",
+    "project_id": "hallmanageme",
+    "storage_bucket": "hallmanageme.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48078542113:android:afd67262f2b641828cda60",
+        "android_client_info": {
+          "package_name": "com.arafatporosh.hallmanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0rhnHXBLWpeqPUUB0nEb9nxdvDS3na5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

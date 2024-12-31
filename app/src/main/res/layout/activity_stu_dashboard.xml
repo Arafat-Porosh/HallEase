@@ -1,0 +1,239 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".stuDashboard">
+
+    <!-- Title -->
+
+    <!-- Subtitle -->
+
+    <TextView
+        android:id="@+id/tv_dashboard_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:text="Student Dashboard"
+        android:textColor="#FF5722"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_for_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="For you"
+        android:textSize="16sp"
+        android:textColor="#808080"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_dashboard_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Create Complaint Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_create_complaint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_you"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="#FFF3F3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/img_create_complaint"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_complaint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_create_complaint_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Create Complaint"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/img_create_complaint"
+                app:layout_constraintTop_toTopOf="@id/img_create_complaint"
+                app:layout_constraintEnd_toStartOf="@id/img_arrow_create_complaint" />
+
+            <TextView
+                android:id="@+id/tv_create_complaint_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Tap This"
+                android:textSize="14sp"
+                android:textColor="#D32F2F"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@id/tv_create_complaint_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_create_complaint_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_create_complaint_title" />
+
+            <ImageView
+                android:id="@+id/img_arrow_create_complaint"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Complaint History Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_complaint_history"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/card_create_complaint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="#FFF3F3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/img_complaint_history"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_complaint_history"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_complaint_history_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Complaint History"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/img_complaint_history"
+                app:layout_constraintTop_toTopOf="@id/img_complaint_history"
+                app:layout_constraintEnd_toStartOf="@id/img_arrow_complaint_history" />
+
+            <TextView
+                android:id="@+id/tv_complaint_history_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Tap This"
+                android:textSize="14sp"
+                android:textColor="#D32F2F"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@id/tv_complaint_history_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_complaint_history_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_complaint_history_title" />
+
+            <ImageView
+                android:id="@+id/img_arrow_complaint_history"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Apply for Seat Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_apply_seat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/card_complaint_history"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="#FFF3F3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/img_apply_seat"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_seat_apply"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_apply_seat_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Apply for Seat"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/img_apply_seat"
+                app:layout_constraintTop_toTopOf="@id/img_apply_seat"
+                app:layout_constraintEnd_toStartOf="@id/img_arrow_apply_seat" />
+
+            <TextView
+                android:id="@+id/tv_apply_seat_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Tap This"
+                android:textSize="14sp"
+                android:textColor="#D32F2F"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@id/tv_apply_seat_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_apply_seat_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_apply_seat_title" />
+
+            <ImageView
+                android:id="@+id/img_arrow_apply_seat"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        app:menu="@menu/bottom_navigation_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#FCE4EC" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

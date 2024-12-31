@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+
+
+    <TextView
+        android:id="@+id/title_create_complaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="Create Complaint"
+        android:textColor="#FF0000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Heading Input Field -->
+
+    <TextView
+        android:id="@+id/tv_heading_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Heading of the complaint"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_create_complaint" />
+
+    <EditText
+        android:id="@+id/et_complaint_heading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Router Problem"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:textSize="25sp"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/tv_heading_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Complaint Input Label -->
+
+    <!-- Complaint Input Field -->
+    <TextView
+        android:id="@+id/tv_complaint_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Write your complaint here"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_complaint_heading" />
+
+    <EditText
+        android:id="@+id/et_complaint_details"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:hint="The router in front of room no. 470 is not working properly..."
+        android:background="#F5E8FF"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/tv_complaint_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/btn_submit_complaint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:backgroundTint="#4A90E2"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/et_complaint_details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
