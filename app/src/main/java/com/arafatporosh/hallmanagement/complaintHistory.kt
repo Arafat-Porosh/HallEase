@@ -17,10 +17,8 @@ class complaintHistory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_complaint_history)
 
-        // Initialize Firebase Database
         database = FirebaseDatabase.getInstance().getReference("complaints")
 
-        // Setup RecyclerView
         complaintsRecyclerView = findViewById(R.id.rv_complaint_history)
         complaintsRecyclerView.layoutManager = LinearLayoutManager(this)
         complaintsAdapter = ComplaintHistoryAdapter(complaintsList)
@@ -31,7 +29,7 @@ class complaintHistory : AppCompatActivity() {
     private fun fetchComplaints() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                complaintsList.clear() // Clear the list to avoid duplicate data
+                complaintsList.clear()
                 for (complaintSnapshot in snapshot.children) {
                     val complaint = complaintSnapshot.getValue(Complaint::class.java)
                     if (complaint != null) {

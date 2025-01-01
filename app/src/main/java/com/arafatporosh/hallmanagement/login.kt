@@ -18,7 +18,6 @@ class login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
         val emailField = findViewById<EditText>(R.id.et_cuet_mail)
@@ -33,7 +32,6 @@ class login : AppCompatActivity() {
         }
 
 
-        // Sign-in button click listener
         signInButton.setOnClickListener {
             val userEmail = emailField.text.toString().trim()
             val password = passwordField.text.toString().trim()
@@ -46,7 +44,6 @@ class login : AppCompatActivity() {
         }
 
         forgotPasswordText.setOnClickListener {
-            // Navigate to Forgot Password page (implement separately if needed)
             val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
         }
@@ -65,7 +62,6 @@ class login : AppCompatActivity() {
                             if (dataSnapshot.exists()) {
                                 val userType = dataSnapshot.child("email").value.toString()
 
-                                // Admin check
                                 if (userEmail == "bbhall@cuet.ac.bd") {
                                     // Navigate to Admin Dashboard
 //                                    val intent = Intent(this, AdminDashboardActivity::class.java)

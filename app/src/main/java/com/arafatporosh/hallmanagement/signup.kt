@@ -41,7 +41,6 @@ class signup : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Sign-up button click listener
         signUpButton.setOnClickListener {
             val name = studentName.text.toString().trim()
             val id = studentID.text.toString().trim()
@@ -54,7 +53,6 @@ class signup : AppCompatActivity() {
             } else if (!termsCheckBox.isChecked) {
                 Toast.makeText(this, "Please agree to the terms and conditions", Toast.LENGTH_SHORT).show()
             } else {
-                // Create a new user with email and password
                 createNewUser(name, id, userEmail, mobile, pass)
             }
         }

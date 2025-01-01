@@ -27,7 +27,6 @@ class ComplaintHistoryAdapter(private val complaints: List<Complaint>) :
         holder.date.text = java.text.DateFormat.getDateTimeInstance().format(complaint.timestamp)
         holder.status.text = "Status: ${complaint.status}" // Dynamically set the status
 
-        // Update text color based on status
         holder.status.setTextColor(
             if (complaint.status == "Pending") android.graphics.Color.RED
             else android.graphics.Color.GREEN

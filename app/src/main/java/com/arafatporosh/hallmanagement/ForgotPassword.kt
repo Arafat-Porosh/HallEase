@@ -18,16 +18,11 @@ class ForgotPassword : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Initialize views
         emailInput = findViewById(R.id.emailInput)
         continueButton = findViewById(R.id.continueButton)
 
-        // Handle back button click
-
-        // Handle continue button click
         continueButton.setOnClickListener {
             val email = emailInput.text.toString().trim()
 
@@ -37,7 +32,6 @@ class ForgotPassword : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Send password reset email
             auth.sendPasswordResetEmail(email)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {

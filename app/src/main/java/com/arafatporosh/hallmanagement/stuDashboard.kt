@@ -14,7 +14,6 @@ class stuDashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stu_dashboard)
 
-        // Set click listeners for the cards
         findViewById<CardView>(R.id.card_create_complaint).setOnClickListener {
             val intent = Intent(this, createComplaint::class.java)
             startActivity(intent)

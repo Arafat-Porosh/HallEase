@@ -12,12 +12,10 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        // Simulate a delay before navigating to the Login Page
         Handler(Looper.getMainLooper()).postDelayed({
-            // Navigate to Login Page
             val intent = Intent(this@WelcomeActivity, login::class.java)
             startActivity(intent)
-            finish() // Close Welcome screen
-        }, 5000) // Delay for 3 seconds
+            finish()
+        }, 5000)
     }
 }
