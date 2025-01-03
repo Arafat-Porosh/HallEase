@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Hall Management</string>
+    <string name="student_dashboard">Student Dashboard</string>
+    <string name="for_you">For you</string>
+    <string name="create_complaint">Create Complaint</string>
+    <string name="tap_this">Tap This</string>
+    <string name="complaint_history">Complaint History</string>
+    <string name="apply_for_seat">Apply for Seat</string>
+    <string name="heading_of_the_complaint">Heading of the complaint</string>
+    <string name="router_problem">Router Problem</string>
+    <string name="write_your_complaint_here">Write your complaint here</string>
+    <string name="the_router_in_front_of_room_no_470_is_not_working_properly">The router in front of room no. 470 is not working properly...</string>
+    <string name="submit">Submit</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="enter_your_cuet_mail_for_the_verification_process_we_will_send_a_code_to_your_email">Enter your CUET mail for the verification process, we will send a code to your email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="continue_text">Continue</string>
+    <string name="sign_in">Sign In</string>
+    <string name="please_sign_in_to_continue">Please sign in to continue</string>
+    <string name="cuet_mail_id">Cuet Mail ID</string>
+    <string name="password">Password</string>
+    <string name="have_no_account">Have no account?</string>
+    <string name="click_here_to_sign_up">Click here to sign up</string>
+    <string name="apply_for_room">Apply for Room</string>
+    <string name="choose_a_room">Choose a Room</string>
+    <string name="student_ids_of_applicants">Student IDs of Applicants</string>
+    <string name="student_1">Student 1:</string>
+    <string name="enter_student_id">Enter Student ID</string>
+    <string name="student_2">Student 2:</string>
+    <string name="student_3">Student 3:</string>
 </resources>
