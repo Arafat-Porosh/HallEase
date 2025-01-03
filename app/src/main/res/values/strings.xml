@@ -28,4 +28,19 @@
     <string name="enter_student_id">Enter Student ID</string>
     <string name="student_2">Student 2:</string>
     <string name="student_3">Student 3:</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="students_information">Students Information</string>
+    <string name="room_requests">Room Requests</string>
+    <string name="all_complaints">All Complaints</string>
+    <string name="available_rooms">Available Rooms</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_your_account_to_get_started">Create your account to get started</string>
+    <string name="student_name">Student Name</string>
+    <string name="student_id">Student ID</string>
+    <string name="email">Email</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="department_name">Department Name</string>
+    <string name="i_agree_to_the_terms_of_use_and_privacy_policy">I agree to the terms of use and privacy policy</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="click_here">Click here</string>
 </resources>

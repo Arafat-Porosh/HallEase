@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AdminDashboard">
+
+    <TextView
+        android:id="@+id/tvAdminDashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin_dashboard"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="24sp"
+        android:layout_marginTop="75dp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvForYou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/for_you"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvAdminDashboard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardStudentInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFF3F3"
+        app:layout_constraintTop_toBottomOf="@id/tvForYou"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivStudentInfo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_student"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStudentInfoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/students_information"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintStart_toEndOf="@id/ivStudentInfo"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:id="@+id/tvStudentInfoTap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tap_this"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintStart_toStartOf="@id/tvStudentInfoTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvStudentInfoTitle"
+                android:layout_marginTop="4dp" />
+
+            <ImageView
+                android:id="@+id/ivArrowStudentInfo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardRoomRequest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFF3F3"
+        app:layout_constraintTop_toBottomOf="@id/cardStudentInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivRoomRequest"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_seat_apply"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvRoomRequestTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/room_requests"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintStart_toEndOf="@id/ivRoomRequest"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:id="@+id/tvRoomRequestTap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tap_this"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintStart_toStartOf="@id/tvRoomRequestTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvRoomRequestTitle"
+                android:layout_marginTop="4dp" />
+
+            <ImageView
+                android:id="@+id/ivArrowRoomRequest"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardComplaint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFF3F3"
+        app:layout_constraintTop_toBottomOf="@id/cardRoomRequest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivComplaint"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_complaint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvComplaintTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/all_complaints"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintStart_toEndOf="@id/ivComplaint"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:id="@+id/tvComplaintTap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tap_this"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintStart_toStartOf="@id/tvComplaintTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvComplaintTitle"
+                android:layout_marginTop="4dp" />
+
+            <ImageView
+                android:id="@+id/ivArrowComplaint"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAvailableRooms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFF3F3"
+        app:layout_constraintTop_toBottomOf="@id/cardComplaint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivAvailableRooms"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_seat_apply"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAvailableRoomsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/available_rooms"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintStart_toEndOf="@id/ivAvailableRooms"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:id="@+id/tvAvailableRoomsTap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tap_this"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintStart_toStartOf="@id/tvAvailableRoomsTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvAvailableRoomsTitle"
+                android:layout_marginTop="4dp" />
+
+            <ImageView
+                android:id="@+id/ivArrowAvailableRooms"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        app:menu="@menu/bottom_navigation_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#FCE4EC" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

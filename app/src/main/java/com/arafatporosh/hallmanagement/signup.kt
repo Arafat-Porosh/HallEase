@@ -23,14 +23,13 @@ class signup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Initialize views
         val studentName = findViewById<EditText>(R.id.et_student_name)
         val studentID = findViewById<EditText>(R.id.et_student_id)
         val email = findViewById<EditText>(R.id.et_mail)
         val mobileNo = findViewById<EditText>(R.id.et_mobile_no)
+        val department = findViewById<EditText>(R.id.et_dept)
         val password = findViewById<EditText>(R.id.et_password)
         val termsCheckBox = findViewById<CheckBox>(R.id.cb_terms_conditions)
         val signUpButton = findViewById<Button>(R.id.btn_sign_up)
@@ -46,19 +45,20 @@ class signup : AppCompatActivity() {
             val id = studentID.text.toString().trim()
             val userEmail = email.text.toString().trim()
             val mobile = mobileNo.text.toString().trim()
+            val dept = department.text.toString().trim()
             val pass = password.text.toString().trim()
 
-            if (name.isEmpty() || id.isEmpty() || userEmail.isEmpty() || mobile.isEmpty() || pass.isEmpty()) {
+            if (name.isEmpty() || id.isEmpty() || userEmail.isEmpty() || mobile.isEmpty() || dept.isEmpty() || pass.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
             } else if (!termsCheckBox.isChecked) {
                 Toast.makeText(this, "Please agree to the terms and conditions", Toast.LENGTH_SHORT).show()
             } else {
-                createNewUser(name, id, userEmail, mobile, pass)
+                createNewUser(name, id, userEmail, mobile, dept, pass)
             }
         }
     }
 
-    private fun createNewUser(name: String, id: String, userEmail: String, mobile: String, password: String) {
+    private fun createNewUser(name: String, id: String, userEmail: String, mobile: String, dept: String, password: String) {
         auth.createUserWithEmailAndPassword(userEmail, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -71,7 +71,8 @@ class signup : AppCompatActivity() {
                             "name" to name,
                             "studentID" to id,
                             "email" to userEmail,
-                            "mobileNo" to mobile
+                            "mobileNo" to mobile,
+                            "dept" to dept
                         )
 
                         userRef.setValue(userData)
