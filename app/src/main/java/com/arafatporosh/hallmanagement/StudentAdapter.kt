@@ -47,12 +47,10 @@ class StudentAdapter(
         builder.setMessage("Do you want to remove the student?")
 
         builder.setPositiveButton("Yes") { _, _ ->
-            // Remove student from Firebase
             val database = FirebaseDatabase.getInstance()
             val ref = database.getReference("users").child(student.studentID)
 
             ref.removeValue().addOnSuccessListener {
-                // Remove student from local list and notify adapter
                 studentList.removeAt(position)
                 notifyItemRemoved(position)
                 notifyItemRangeChanged(position, studentList.size)
@@ -62,7 +60,6 @@ class StudentAdapter(
         }
 
         builder.setNegativeButton("No") { dialog, _ ->
-            // Dismiss the dialog
             dialog.dismiss()
         }
 
