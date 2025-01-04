@@ -94,9 +94,9 @@ class RoomApply : AppCompatActivity() {
 
         val applicationData = mapOf(
             "room" to selectedRoom,
-            "students" to listOf(student1, student2, student3, student4).filter { it.isNotEmpty() }
+            "students" to listOf(student1, student2, student3, student4).filter { it.isNotEmpty() },
+            "status" to "Pending" // Add default status as "Pending"
         )
-
         applicationsRef.push().setValue(applicationData).addOnSuccessListener {
             Toast.makeText(this, "Application submitted successfully", Toast.LENGTH_SHORT).show()
             clearFields()
@@ -104,6 +104,7 @@ class RoomApply : AppCompatActivity() {
             Toast.makeText(this, "Failed to submit application", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun clearFields() {
         spinnerRoomOptions.setSelection(0)
