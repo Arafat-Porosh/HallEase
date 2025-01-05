@@ -47,4 +47,14 @@
     <string name="add">Add</string>
     <string name="room_no">Room No.</string>
     <string name="room_no_a503">Room no A503</string>
+    <string name="student_id_123456">Student ID: 123456</string>
+    <string name="department_cse">Department: CSE</string>
+    <string name="phone_123_456_7890">Phone: 123-456-7890</string>
+    <string name="remove">Remove</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="pending">Pending</string>
+    <string name="status">Status:</string>
+    <string name="id1_2011001_nid2_2011002_nid3_2011003_nid4_2011004">ID1: 2011001\nID2: 2011002\nID3: 2011003\nID4: 2011004</string>
+    <string name="room_no_a502">Room No: A502</string>
 </resources>

@@ -169,4 +169,11 @@
     <color name="md_theme_surfaceContainer_highContrast">#EEEFE3</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#E8E9DE</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#E2E3D8</color>
+    <color name="background_color">#F5F5F5</color>
+    <color name="primary_text_color">#212121</color>
+    <color name="secondary_text_color">#757575</color>
+    <color name="status_pending">#D32F2F</color>
+    <color name="accept_button_color">#4CAF50</color>
+    <color name="reject_button_color">#F44336</color>
+
 </resources>
