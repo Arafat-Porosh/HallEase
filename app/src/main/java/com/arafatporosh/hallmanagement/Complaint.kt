@@ -5,5 +5,5 @@ data class Complaint(
     val heading: String = "",
     val details: String = "",
     val timestamp: Long = 0L,
-    val status: String = "Pending"
+    val status: String = ""
 )
