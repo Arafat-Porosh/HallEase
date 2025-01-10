@@ -63,12 +63,10 @@ class login : AppCompatActivity() {
                                 val userType = dataSnapshot.child("email").value.toString()
 
                                 if (userEmail == "bbhall@cuet.ac.bd") {
-                                    // Navigate to Admin Dashboard
-//                                    val intent = Intent(this, AdminDashboardActivity::class.java)
-//                                    startActivity(intent)
+                                    val intent = Intent(this, AdminDashboard::class.java)
+                                    startActivity(intent)
                                     Toast.makeText(this, "Welcome Admin!", Toast.LENGTH_SHORT).show()
                                 } else {
-                                    // Navigate to Student Dashboard
                                     val intent = Intent(this, stuDashboard::class.java)
                                     startActivity(intent)
                                     Toast.makeText(this, "Welcome Student!", Toast.LENGTH_SHORT).show()

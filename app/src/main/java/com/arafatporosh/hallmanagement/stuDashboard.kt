@@ -20,9 +20,13 @@ class stuDashboard : AppCompatActivity() {
         }
         findViewById<CardView>(R.id.card_complaint_history).setOnClickListener {
             Toast.makeText(this, "Complaint History Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, complaintHistory::class.java)
+            startActivity(intent)
         }
         findViewById<CardView>(R.id.card_apply_seat).setOnClickListener {
             Toast.makeText(this, "Apply for Seat Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, RoomApply::class.java)
+            startActivity(intent)
         }
     }
 }
