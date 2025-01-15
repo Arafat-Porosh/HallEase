@@ -1,5 +1,6 @@
 package com.arafatporosh.hallmanagement
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -47,4 +48,12 @@ class complaintHistory : AppCompatActivity() {
             }
         })
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val Intent = Intent(this, stuDashboard::class.java)
+        startActivity(Intent)
+        finish()
+    }
+
 }

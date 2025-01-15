@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -29,8 +30,8 @@ class login : AppCompatActivity() {
         signUpButton.setOnClickListener {
             val intent = Intent(this, signup::class.java)
             startActivity(intent)
+            finish()
         }
-
 
         signInButton.setOnClickListener {
             val userEmail = emailField.text.toString().trim()
@@ -46,6 +47,7 @@ class login : AppCompatActivity() {
         forgotPasswordText.setOnClickListener {
             val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -55,27 +57,21 @@ class login : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     if (user != null) {
-                        val database = FirebaseDatabase.getInstance()
-                        val userRef = database.getReference("users").child(user.uid)
-
-                        userRef.get().addOnSuccessListener { dataSnapshot ->
-                            if (dataSnapshot.exists()) {
-                                val userType = dataSnapshot.child("email").value.toString()
-
-                                if (userEmail == "bbhall@cuet.ac.bd") {
+                        if (userEmail == "bbhall@cuet.ac.bd") {
+                            promptAdminPassword { isAdminPasswordCorrect ->
+                                if (isAdminPasswordCorrect) {
                                     val intent = Intent(this, AdminDashboard::class.java)
                                     startActivity(intent)
                                     Toast.makeText(this, "Welcome Admin!", Toast.LENGTH_SHORT).show()
+                                    finish()
                                 } else {
-                                    val intent = Intent(this, stuDashboard::class.java)
-                                    startActivity(intent)
-                                    Toast.makeText(this, "Welcome Student!", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, "Invalid admin password", Toast.LENGTH_SHORT).show()
                                 }
-                            } else {
-                                Toast.makeText(this, "User data not found in database.", Toast.LENGTH_SHORT).show()
                             }
-                        }.addOnFailureListener {
-                            Toast.makeText(this, "Failed to fetch user data: ${it.message}", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val intent = Intent(this, stuDashboard::class.java)
+                            startActivity(intent)
+                            Toast.makeText(this, "Welcome Student!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
@@ -84,5 +80,37 @@ class login : AppCompatActivity() {
             }.addOnFailureListener { exception ->
                 Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun promptAdminPassword(callback: (Boolean) -> Unit) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Admin Authentication")
+
+        val input = EditText(this)
+        input.hint = "Enter Admin Password"
+        builder.setView(input)
+
+        builder.setPositiveButton("OK") { _, _ ->
+            val enteredPassword = input.text.toString().trim()
+            callback(enteredPassword == "admin")
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.cancel()
+            callback(false)
+        }
+        builder.show()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        AlertDialog.Builder(this).apply {
+            setTitle("Exit App")
+            setMessage("Are you sure you want to exit?")
+            setPositiveButton("Yes") { _, _ ->
+                finishAffinity()
+            }
+            setNegativeButton("No", null)
+            setCancelable(true)
+        }.show()
     }
 }

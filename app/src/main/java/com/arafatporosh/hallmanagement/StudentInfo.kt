@@ -1,6 +1,8 @@
 package com.arafatporosh.hallmanagement
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,10 +32,13 @@ class StudentInfo : AppCompatActivity() {
         val db = FirebaseDatabase.getInstance().getReference("users")
         db.get().addOnSuccessListener { dataSnapshot ->
             if (dataSnapshot.exists()) {
+                studentList.clear()
                 for (userSnapshot in dataSnapshot.children) {
                     val student = userSnapshot.getValue(Student::class.java)
                     if (student != null) {
                         studentList.add(student)
+                    } else {
+                        Log.e("StudentInfo", "Failed to parse student data: $userSnapshot")
                     }
                 }
                 adapter.notifyDataSetChanged()
@@ -42,6 +47,14 @@ class StudentInfo : AppCompatActivity() {
             }
         }.addOnFailureListener {
             Toast.makeText(this, "Failed to retrieve data: ${it.message}", Toast.LENGTH_SHORT).show()
+            Log.e("StudentInfo", "Error fetching data", it)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AdminDashboard::class.java)
+        startActivity(intent)
+        finish()
     }
 }

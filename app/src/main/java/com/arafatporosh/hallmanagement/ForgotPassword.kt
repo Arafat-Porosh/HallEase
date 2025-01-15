@@ -1,5 +1,6 @@
 package com.arafatporosh.hallmanagement
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -49,5 +50,12 @@ class ForgotPassword : AppCompatActivity() {
                     }
                 }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, login::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -104,4 +104,12 @@ class signup : AppCompatActivity() {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
         Log.e("SignupActivity", "Error: ${exception?.message}")
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, login::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }

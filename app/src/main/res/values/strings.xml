@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hall Management</string>
+    <string name="app_name">HallEase</string>
     <string name="student_dashboard">Student Dashboard</string>
     <string name="for_you">For you</string>
     <string name="create_complaint">Create Complaint</string>

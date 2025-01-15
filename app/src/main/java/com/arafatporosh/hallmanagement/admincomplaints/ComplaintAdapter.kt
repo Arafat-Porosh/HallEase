@@ -94,9 +94,6 @@ class ComplaintAdapter(
         }
     }
 
-
-
-
     override fun getItemCount(): Int = complaintsList.size
 
     private fun Long.toFormattedDate(): String {

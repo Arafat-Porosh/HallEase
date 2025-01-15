@@ -1,5 +1,6 @@
 package com.arafatporosh.hallmanagement
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -79,7 +80,6 @@ class RoomApply : AppCompatActivity() {
     }
 
 
-
     private fun submitApplication() {
         val selectedRoom = spinnerRoomOptions.selectedItem?.toString()
         val student1 = etStudent1.text.toString().trim()
@@ -95,7 +95,7 @@ class RoomApply : AppCompatActivity() {
         val applicationData = mapOf(
             "room" to selectedRoom,
             "students" to listOf(student1, student2, student3, student4).filter { it.isNotEmpty() },
-            "status" to "Pending" // Add default status as "Pending"
+            "status" to "Pending"
         )
         applicationsRef.push().setValue(applicationData).addOnSuccessListener {
             Toast.makeText(this, "Application submitted successfully", Toast.LENGTH_SHORT).show()
@@ -105,7 +105,6 @@ class RoomApply : AppCompatActivity() {
         }
     }
 
-
     private fun clearFields() {
         spinnerRoomOptions.setSelection(0)
         etStudent1.text.clear()
@@ -113,4 +112,12 @@ class RoomApply : AppCompatActivity() {
         etStudent3.text.clear()
         etStudent4.text.clear()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, stuDashboard::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }

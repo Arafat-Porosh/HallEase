@@ -1,5 +1,6 @@
 package com.arafatporosh.hallmanagement.Roominfo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arafatporosh.hallmanagement.AdminDashboard
 import com.arafatporosh.hallmanagement.R
 import com.google.firebase.database.FirebaseDatabase
 
@@ -80,7 +82,7 @@ class RoomInformation : AppCompatActivity() {
     private fun showRoomDialog(roomName: String) {
         AlertDialog.Builder(this).apply {
             setTitle("Room Options")
-            setMessage("Is the room $roomName allotted?")
+            setMessage("Has the room $roomName been allotted?")
             setPositiveButton("Yes") { _, _ ->
                 deleteRoom(roomName)
             }
@@ -108,6 +110,13 @@ class RoomInformation : AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to query room: ${it.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AdminDashboard::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

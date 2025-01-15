@@ -24,7 +24,7 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
         <activity
-            android:name=".admincomplaints.ComplaintActivity"
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,84 +32,133 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".roomrequestadmin.RoomRequestActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- <activity -->
-        <!-- android:name=".Roominfo.RoomInformation" -->
-        <!-- android:exported="false" /> -->
-        <activity
-            android:name=".RoomApply"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".StudentInfo"
+            android:exported="false">
         </activity>
-        <activity
-            android:name=".AdminDashboard"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".RoomApply" -->
-        <!-- android:exported="true" > -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <!-- <activity -->
-        <!-- android:name=".ForgotPassword" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".WelcomeActivity" -->
-        <!-- android:exported="true"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <activity
-            android:name=".complaintHistory"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-<!--        <activity-->
-<!--            android:name=".createComplaint"-->
-<!--            android:exported="false" /> &lt;!&ndash; <activity &ndash;&gt;-->
-        <!-- android:name=".signup" -->
-        <!-- android:exported="true"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
         <activity
             android:name=".login"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".stuDashboard"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".RoomApply"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".complaintHistory"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".roomrequestadmin.RoomRequestActivity"
+            android:exported="false">
+        </activity>
+        <activity android:name=".admincomplaints.ComplaintActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".Roominfo.RoomInformation"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".createComplaint"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".signup"
+            android:exported="false">
+        </activity>
+
+<!--        <activity-->
+<!--            android:name=".roomrequestadmin.RoomRequestActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity> &lt;!&ndash; <activity &ndash;&gt;-->
+<!--        &lt;!&ndash; android:name=".Roominfo.RoomInformation" &ndash;&gt;-->
+<!--        &lt;!&ndash; android:exported="false" /> &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".RoomApply"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity-->
+<!--            android:name=".AdminDashboard"-->
+<!--            android:exported="false" /> &lt;!&ndash; <activity &ndash;&gt;-->
+<!--        &lt;!&ndash; android:name=".RoomApply" &ndash;&gt;-->
+<!--        &lt;!&ndash; android:exported="true" > &ndash;&gt;-->
+<!--        &lt;!&ndash; <intent-filter> &ndash;&gt;-->
+<!--        &lt;!&ndash; <action android:name="android.intent.action.MAIN" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; <category android:name="android.intent.category.LAUNCHER" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; </intent-filter> &ndash;&gt;-->
+<!--        &lt;!&ndash; </activity> &ndash;&gt;-->
+<!--        &lt;!&ndash; <activity &ndash;&gt;-->
+<!--        &lt;!&ndash; android:name=".ForgotPassword" &ndash;&gt;-->
+<!--        &lt;!&ndash; android:exported="false" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; <activity &ndash;&gt;-->
+<!--        &lt;!&ndash; android:name=".WelcomeActivity" &ndash;&gt;-->
+<!--        &lt;!&ndash; android:exported="true"> &ndash;&gt;-->
+<!--        &lt;!&ndash; <intent-filter> &ndash;&gt;-->
+<!--        &lt;!&ndash; <action android:name="android.intent.action.MAIN" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; <category android:name="android.intent.category.LAUNCHER" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; </intent-filter> &ndash;&gt;-->
+<!--        &lt;!&ndash; </activity> &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".complaintHistory"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--&lt;!&ndash;        <activity&ndash;&gt;-->
+<!--&lt;!&ndash;            android:name=".createComplaint"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:exported="false" /> &lt;!&ndash; <activity &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash; android:name=".signup" &ndash;&gt;-->
+<!--        &lt;!&ndash; android:exported="true"> &ndash;&gt;-->
+<!--        &lt;!&ndash; <intent-filter> &ndash;&gt;-->
+<!--        &lt;!&ndash; <action android:name="android.intent.action.MAIN" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; <category android:name="android.intent.category.LAUNCHER" /> &ndash;&gt;-->
+<!--        &lt;!&ndash; </intent-filter> &ndash;&gt;-->
+<!--        &lt;!&ndash; </activity> &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".login"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity-->
+<!--            android:name=".stuDashboard"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
     </application>
 
 </manifest>

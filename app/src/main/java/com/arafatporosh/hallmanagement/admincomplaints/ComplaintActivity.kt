@@ -1,11 +1,13 @@
 package com.arafatporosh.hallmanagement.admincomplaints
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arafatporosh.hallmanagement.AdminDashboard
 import com.arafatporosh.hallmanagement.R
 import com.google.firebase.database.FirebaseDatabase
 
@@ -50,5 +52,11 @@ class ComplaintActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AdminDashboard::class.java)
+        startActivity(intent)
+        finish()
+    }
 
 }

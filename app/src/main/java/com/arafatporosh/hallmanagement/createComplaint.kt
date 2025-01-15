@@ -55,4 +55,12 @@ class createComplaint : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, stuDashboard::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }

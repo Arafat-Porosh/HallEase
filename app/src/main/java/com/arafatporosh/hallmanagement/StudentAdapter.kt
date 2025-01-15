@@ -31,15 +31,16 @@ class StudentAdapter(
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         val student = studentList[position]
-        holder.name.text = student.name
-        holder.id.text = "Student ID: ${student.studentID}"
-        holder.department.text = "Department: ${student.dept}"
-        holder.phone.text = "Phone: ${student.mobileNo}"
+        holder.name.text = student.name ?: "N/A"
+        holder.id.text = "Student ID: ${student.studentID ?: "N/A"}"
+        holder.department.text = "Department: ${student.dept ?: "N/A"}"
+        holder.phone.text = "Phone: ${student.mobileNo ?: "N/A"}"
 
         holder.btnRemove.setOnClickListener {
             showRemoveConfirmationDialog(student, position)
         }
     }
+
 
     private fun showRemoveConfirmationDialog(student: Student, position: Int) {
         val builder = AlertDialog.Builder(context)

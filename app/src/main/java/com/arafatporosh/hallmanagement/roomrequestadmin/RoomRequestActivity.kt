@@ -1,11 +1,13 @@
 package com.arafatporosh.hallmanagement.roomrequestadmin
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arafatporosh.hallmanagement.AdminDashboard
 import com.arafatporosh.hallmanagement.R
 import com.google.firebase.database.FirebaseDatabase
 
@@ -61,29 +63,57 @@ class RoomRequestActivity : AppCompatActivity() {
     }
 
     private fun onAcceptClicked(request: RoomRequest) {
-        roomsRef.orderByChild("roomName").equalTo(request.room).get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists()) {
-                applicationsRef.child(request.key).child("status").setValue("Accepted")
-                    .addOnSuccessListener {
-                        for (data in snapshot.children) {
-                            data.ref.removeValue().addOnSuccessListener {
-                                Toast.makeText(this, "Request accepted and room ${request.room} deleted", Toast.LENGTH_SHORT).show()
-                                loadRequests()
-                            }.addOnFailureListener {
-                                Toast.makeText(this, "Failed to delete room: ${it.message}", Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(this).apply {
+            setTitle("Accept Application")
+            setMessage("Are you sure you want to accept this application for room ${request.room}?")
+            setPositiveButton("Yes") { _, _ ->
+                roomsRef.orderByChild("roomName").equalTo(request.room).get().addOnSuccessListener { snapshot ->
+                    if (snapshot.exists()) {
+                        applicationsRef.child(request.key).child("status").setValue("Accepted")
+                            .addOnSuccessListener {
+                                for (data in snapshot.children) {
+                                    data.ref.removeValue().addOnSuccessListener {
+                                        Toast.makeText(
+                                            this@RoomRequestActivity,
+                                            "Request accepted and room ${request.room} deleted",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        loadRequests()
+                                    }.addOnFailureListener {
+                                        Toast.makeText(
+                                            this@RoomRequestActivity,
+                                            "Failed to delete room: ${it.message}",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
                             }
-                        }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    this@RoomRequestActivity,
+                                    "Failed to accept request",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    } else {
+                        Toast.makeText(
+                            this@RoomRequestActivity,
+                            "Room not available",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                    .addOnFailureListener {
-                        Toast.makeText(this, "Failed to accept request", Toast.LENGTH_SHORT).show()
-                    }
-            } else {
-                Toast.makeText(this, "Room not available", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        this@RoomRequestActivity,
+                        "Failed to check room availability: ${it.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }.addOnFailureListener {
-            Toast.makeText(this, "Failed to check room availability: ${it.message}", Toast.LENGTH_SHORT).show()
-        }
+            setNegativeButton("No", null)
+        }.show()
     }
+
 
 
     private fun onRejectClicked(request: RoomRequest) {
@@ -103,4 +133,12 @@ class RoomRequestActivity : AppCompatActivity() {
             setNegativeButton("No", null)
         }.show()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AdminDashboard::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }
