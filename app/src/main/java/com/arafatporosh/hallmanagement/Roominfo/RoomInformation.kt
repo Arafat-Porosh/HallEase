@@ -69,13 +69,22 @@ class RoomInformation : AppCompatActivity() {
     }
 
     private fun addNewRoom(roomName: String) {
-        val roomData = mapOf("roomName" to roomName)
-        roomsRef.push().setValue(roomData).addOnSuccessListener {
-            etNewRoom.text.clear()
-            roomList.add(roomName)
-            roomAdapter.notifyItemInserted(roomList.size - 1)
+        roomsRef.orderByChild("roomName").equalTo(roomName).get().addOnSuccessListener { snapshot ->
+            if (snapshot.exists()) {
+                Toast.makeText(this, "Room $roomName already exists", Toast.LENGTH_SHORT).show()
+            } else {
+                val roomData = mapOf("roomName" to roomName)
+                roomsRef.push().setValue(roomData).addOnSuccessListener {
+                    etNewRoom.text.clear()
+                    roomList.add(roomName)
+                    roomAdapter.notifyItemInserted(roomList.size - 1)
+                    Toast.makeText(this, "Room $roomName added successfully", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to add room", Toast.LENGTH_SHORT).show()
+                }
+            }
         }.addOnFailureListener {
-            Toast.makeText(this, "Failed to add room", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Failed to check for duplicate room: ${it.message}", Toast.LENGTH_SHORT).show()
         }
     }
 

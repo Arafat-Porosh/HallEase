@@ -53,6 +53,9 @@ class RoomRequestActivity : AppCompatActivity() {
                     val key = data.key ?: ""
                     requestList.add(RoomRequest(room, status, students, key))
                 }
+
+                requestList.sortBy { it.status != "Pending" }
+
                 adapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(this, "No applications found", Toast.LENGTH_SHORT).show()
@@ -61,6 +64,7 @@ class RoomRequestActivity : AppCompatActivity() {
             Toast.makeText(this, "Failed to load requests: ${it.message}", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun onAcceptClicked(request: RoomRequest) {
         AlertDialog.Builder(this).apply {

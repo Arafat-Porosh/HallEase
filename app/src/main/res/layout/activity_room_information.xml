@@ -35,7 +35,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_rooms"
         android:layout_width="0dp"
-        android:layout_height="350dp"
+        android:layout_height="370dp"
         android:layout_marginTop="16dp"
         android:background="#FBE9E7"
         android:clipToPadding="false"
