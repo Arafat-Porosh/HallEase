@@ -87,23 +87,68 @@ class RoomApply : AppCompatActivity() {
         val student3 = etStudent3.text.toString().trim()
         val student4 = etStudent4.text.toString().trim()
 
-        if (selectedRoom.isNullOrEmpty() || student1.isEmpty()) {
-            Toast.makeText(this, "Please select a room and provide at least one Student ID", Toast.LENGTH_SHORT).show()
+        if (selectedRoom.isNullOrEmpty() || student1.isEmpty() || student2.isEmpty() || student3.isEmpty() || student4.isEmpty()) {
+            Toast.makeText(this, "All four student IDs must be provided.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val applicationData = mapOf(
-            "room" to selectedRoom,
-            "students" to listOf(student1, student2, student3, student4).filter { it.isNotEmpty() },
-            "status" to "Pending"
-        )
-        applicationsRef.push().setValue(applicationData).addOnSuccessListener {
-            Toast.makeText(this, "Application submitted successfully", Toast.LENGTH_SHORT).show()
-            clearFields()
-        }.addOnFailureListener {
-            Toast.makeText(this, "Failed to submit application", Toast.LENGTH_SHORT).show()
+        val studentIds = listOf(student1, student2, student3, student4)
+        if (studentIds.size != studentIds.distinct().size) {
+            Toast.makeText(this, "Student IDs must be unique.", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        applicationsRef.orderByChild("students").get()
+            .addOnSuccessListener { snapshot ->
+                var hasPendingApplication = false
+                var hasAcceptedApplication = false
+
+                if (snapshot.exists()) {
+                    for (application in snapshot.children) {
+                        val applicationStudents = application.child("students").value as? List<*>
+                        val status = application.child("status").value.toString()
+
+                        if (applicationStudents != null && applicationStudents.any { it in studentIds }) {
+                            if (status == "Pending") {
+                                hasPendingApplication = true
+                            } else if (status == "Accepted") {
+                                hasAcceptedApplication = true
+                            }
+                        }
+                    }
+                }
+
+                when {
+                    hasAcceptedApplication -> {
+                        Toast.makeText(this, "One or more students have already been allotted to a room.", Toast.LENGTH_LONG).show()
+                    }
+                    hasPendingApplication -> {
+                        Toast.makeText(this, "One or more students already have pending applications.", Toast.LENGTH_LONG).show()
+                    }
+                    else -> {
+                        // Proceed with application submission
+                        val applicationData = mapOf(
+                            "room" to selectedRoom,
+                            "students" to studentIds,
+                            "status" to "Pending"
+                        )
+                        applicationsRef.push().setValue(applicationData)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "Application submitted successfully", Toast.LENGTH_SHORT).show()
+                                clearFields()
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(this, "Failed to submit application", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error checking application status: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
     }
+
+
 
     private fun clearFields() {
         spinnerRoomOptions.setSelection(0)

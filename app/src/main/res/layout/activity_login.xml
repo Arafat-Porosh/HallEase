@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
         android:text="@string/sign_in"
-        android:textColor="#4A90E2"
+        android:textColor="#81AEE2"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
