@@ -69,9 +69,19 @@ class login : AppCompatActivity() {
                                 }
                             }
                         } else {
-                            val intent = Intent(this, stuDashboard::class.java)
-                            startActivity(intent)
-                            Toast.makeText(this, "Welcome Student!", Toast.LENGTH_SHORT).show()
+                            val databaseRef = FirebaseDatabase.getInstance().getReference("users")
+                            databaseRef.child(user.uid).get().addOnSuccessListener { dataSnapshot ->
+                                if (dataSnapshot.exists()) {
+                                    val studentName = dataSnapshot.child("name").value.toString()
+                                    val intent = Intent(this, stuDashboard::class.java)
+                                    startActivity(intent)
+                                    Toast.makeText(this, "Welcome $studentName!", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(this, "User not found in database", Toast.LENGTH_SHORT).show()
+                                }
+                            }.addOnFailureListener {
+                                Toast.makeText(this, "Error fetching user data", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 } else {
@@ -81,6 +91,7 @@ class login : AppCompatActivity() {
                 Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     private fun promptAdminPassword(callback: (Boolean) -> Unit) {
         val builder = AlertDialog.Builder(this)
