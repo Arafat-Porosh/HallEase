@@ -58,10 +58,6 @@ class AdminDashboard : AppCompatActivity() {
                     Toast.makeText(this, "Dashboard selected", Toast.LENGTH_SHORT).show()
                     true
                 }
-                R.id.nav_profile -> {
-                    Toast.makeText(this, "Profile selected", Toast.LENGTH_SHORT).show()
-                    true
-                }
                 R.id.nav_logout -> {
                     handleLogout()
                     true
