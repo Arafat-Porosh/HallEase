@@ -51,7 +51,6 @@ class AdminDashboard : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_dashboard -> {

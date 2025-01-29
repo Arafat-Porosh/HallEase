@@ -79,7 +79,6 @@ class RoomApply : AppCompatActivity() {
         }
     }
 
-
     private fun submitApplication() {
         val selectedRoom = spinnerRoomOptions.selectedItem?.toString()
         val student1 = etStudent1.text.toString().trim()
@@ -109,9 +108,7 @@ class RoomApply : AppCompatActivity() {
                         val status = application.child("status").value.toString()
 
                         if (applicationStudents != null && applicationStudents.any { it in studentIds }) {
-                            if (status == "Pending") {
-                                hasPendingApplication = true
-                            } else if (status == "Accepted") {
+                            if (status == "Accepted") {
                                 hasAcceptedApplication = true
                             }
                         }
@@ -122,11 +119,7 @@ class RoomApply : AppCompatActivity() {
                     hasAcceptedApplication -> {
                         Toast.makeText(this, "One or more students have already been allotted to a room.", Toast.LENGTH_LONG).show()
                     }
-                    hasPendingApplication -> {
-                        Toast.makeText(this, "One or more students already have pending applications.", Toast.LENGTH_LONG).show()
-                    }
                     else -> {
-                        // Proceed with application submission
                         val applicationData = mapOf(
                             "room" to selectedRoom,
                             "students" to studentIds,
