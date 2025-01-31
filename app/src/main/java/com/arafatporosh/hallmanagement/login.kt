@@ -74,6 +74,7 @@ class login : AppCompatActivity() {
                                 if (dataSnapshot.exists()) {
                                     val studentName = dataSnapshot.child("name").value.toString()
                                     val intent = Intent(this, stuDashboard::class.java)
+                                    intent.putExtra("username", studentName)
                                     startActivity(intent)
                                     Toast.makeText(this, "Welcome $studentName!", Toast.LENGTH_SHORT).show()
                                 } else {

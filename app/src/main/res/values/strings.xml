@@ -61,4 +61,12 @@
     <string name="status_unknown">Unknown</string>
     <string name="room_no_a502">Room No: A502</string>
     <string name="complaints">Complaints</string>
+    <string name="user_name">User Name</string>
+    <string-array name="complaint_types">
+        <item>Electrical Issue</item>
+        <item>Water Leakage</item>
+        <item>Maintenance</item>
+        <item>Internet Issue</item>
+        <item>Other</item>
+    </string-array>
 </resources>
