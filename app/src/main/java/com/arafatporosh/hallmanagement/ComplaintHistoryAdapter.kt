@@ -12,6 +12,8 @@ class ComplaintHistoryAdapter(private val complaints: List<Complaint>) :
     inner class ComplaintViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.tv_complaint_title)
         val description: TextView = view.findViewById(R.id.tv_complaint_details)
+        val studentID: TextView = view.findViewById(R.id.tv_complaint_by_ID)
+        val category: TextView = view.findViewById(R.id.tv_category_name)
         val date: TextView = view.findViewById(R.id.tv_complaint_date)
         val status: TextView = view.findViewById(R.id.tv_complaint_status)
     }
@@ -26,8 +28,10 @@ class ComplaintHistoryAdapter(private val complaints: List<Complaint>) :
         val complaint = complaints[position]
         holder.title.text = complaint.heading
         holder.description.text = complaint.details
-        holder.date.text = java.text.DateFormat.getDateTimeInstance().format(complaint.timestamp)
-        holder.status.text = "Status: ${complaint.status}"
+        holder.studentID.text = complaint.studentID
+        holder.category.text = complaint.type
+        holder.date.text = java.text.DateFormat.getDateInstance().format(complaint.timestamp)
+        holder.status.text = complaint.status
 
         holder.status.setTextColor(
             if (complaint.status == "Pending") android.graphics.Color.RED
