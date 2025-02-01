@@ -119,7 +119,7 @@ class ComplaintAdapter(
                 if (snapshot.exists()) {
                     for (child in snapshot.children) {
                         val fcmToken = child.child("fcmToken").value.toString()
-                        val studentEmail = child.child("email").value.toString() // ✅ Get student's email
+                        val studentEmail = child.child("email").value.toString()
 
                         Log.d("Notification", "Retrieved FCM Token: $fcmToken")
                         Log.d("Notification", "Retrieved Email: $studentEmail")
@@ -131,14 +131,13 @@ class ComplaintAdapter(
                             Log.e("FCM", "Invalid FCM Token")
                         }
 
-                        // ✉️ Send Email Notification
                         if (studentEmail.isNotEmpty()) {
                             sendEmailToStudent(studentEmail, complaintTitle)
                         } else {
                             Log.e("Email", "No email found for student: $studentID")
                         }
 
-                        return@addOnSuccessListener // Exit after first match
+                        return@addOnSuccessListener
                     }
                 } else {
                     Log.e("Notification", "No user found for studentID: $studentID")
@@ -196,7 +195,7 @@ class ComplaintAdapter(
 
             override fun getBody(): ByteArray {
                 val body = notificationData.toString()
-                Log.d("FCM", "FCM Request Body: $body") // Log the request body
+                Log.d("FCM", "FCM Request Body: $body")
                 return body.toByteArray(Charsets.UTF_8)
             }
         }
@@ -215,7 +214,7 @@ class ComplaintAdapter(
 
             credentials.refreshIfExpired()
             val token = credentials.accessToken.tokenValue
-            Log.d("FCM", "Generated OAuth Token: $token") // Log the generated token
+            Log.d("FCM", "Generated OAuth Token: $token")
             token
         } catch (e: Exception) {
             Log.e("FCM", "Failed to generate OAuth Token", e)
