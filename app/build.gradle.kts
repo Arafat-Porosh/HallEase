@@ -40,6 +40,18 @@ android {
         viewBinding = true
     }
 
+    packaging {
+        resources {
+            excludes += "META-INF/INDEX.LIST"
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/NOTICE.md"
+        }
+    }
+
+    sourceSets["main"].assets.srcDirs("src/main/assets")
+
 }
 
 
@@ -49,6 +61,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation ("com.sun.mail:android-mail:1.6.7")
+    implementation ("com.sun.mail:android-activation:1.6.7")
+    implementation ("com.google.auth:google-auth-library-oauth2-http:1.22.0")
+
     implementation("androidx.activity:activity-compose:1.9.3")
     // Remove the following line
     implementation ("com.airbnb.android:lottie:6.1.0")
@@ -63,6 +79,10 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.play.services.maps)
+    implementation(libs.firebase.messaging.ktx)
+    implementation(libs.volley)
+    implementation(libs.androidx.games.activity)
+    implementation(libs.firebase.messaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

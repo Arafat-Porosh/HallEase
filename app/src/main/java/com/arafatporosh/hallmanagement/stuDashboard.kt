@@ -1,7 +1,9 @@
 package com.arafatporosh.hallmanagement
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -10,6 +12,7 @@ import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class stuDashboard : AppCompatActivity() {
 
@@ -27,7 +30,8 @@ class stuDashboard : AppCompatActivity() {
 //        userNameTextView.text = username ?: "Student"
         userNameTextView = findViewById(R.id.UserName)
         fetchUserName()
-
+        saveFCMToken()
+        requestNotificationPermission()
 
         findViewById<CardView>(R.id.card_create_complaint).setOnClickListener {
             val intent = Intent(this, createComplaint::class.java)
@@ -82,6 +86,30 @@ class stuDashboard : AppCompatActivity() {
             userNameTextView.text = "Student"
         }
     }
+
+    private fun saveFCMToken() {
+        val userId = auth.currentUser?.uid ?: return
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.e("FCM", "FCM token generation failed", task.exception)
+                return@addOnCompleteListener
+            }
+            val token = task.result
+            Log.d("FCM", "FCM Token: $token")
+
+            FirebaseDatabase.getInstance().getReference("users").child(userId).child("fcmToken")
+                .setValue(token)
+                .addOnSuccessListener { Log.d("FCM", "FCM Token saved successfully") }
+                .addOnFailureListener { Log.e("FCM", "Failed to save FCM token", it) }
+        }
+    }
+
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
+        }
+    }
+
 
 
     private fun showLogoutDialog() {

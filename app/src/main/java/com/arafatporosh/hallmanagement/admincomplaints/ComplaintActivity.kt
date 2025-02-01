@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arafatporosh.hallmanagement.AdminDashboard
+import com.arafatporosh.hallmanagement.Complaints
 import com.arafatporosh.hallmanagement.R
 import com.google.firebase.database.FirebaseDatabase
 
@@ -38,7 +39,6 @@ class ComplaintActivity : AppCompatActivity() {
                 for (complaintSnapshot in dataSnapshot.children) {
                     val complaint = complaintSnapshot.getValue(Complaints::class.java)
                     if (complaint != null) {
-                        // Log the loaded complaint and its status
                         Log.d("ComplaintActivity", "Loaded complaint: ${complaint.heading}, status: ${complaint.status}")
                         complaintsList.add(complaint)
                     }

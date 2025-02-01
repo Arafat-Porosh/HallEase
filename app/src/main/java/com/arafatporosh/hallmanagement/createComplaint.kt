@@ -44,7 +44,7 @@ class createComplaint : AppCompatActivity() {
 
                         val complaint = Complaint(
                             id = complaintId,
-                            studentID = studentID, // Fetch studentID from users database
+                            studentID = studentID,
                             heading = heading,
                             details = details,
                             type = complaintType,

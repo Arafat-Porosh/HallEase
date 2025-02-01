@@ -76,6 +76,7 @@ class login : AppCompatActivity() {
                                     val intent = Intent(this, stuDashboard::class.java)
                                     intent.putExtra("username", studentName)
                                     startActivity(intent)
+                                    finish()
                                     Toast.makeText(this, "Welcome $studentName!", Toast.LENGTH_SHORT).show()
                                 } else {
                                     Toast.makeText(this, "User not found in database", Toast.LENGTH_SHORT).show()
