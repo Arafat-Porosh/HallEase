@@ -102,6 +102,7 @@ class ComplaintCategoryChartActivity : AppCompatActivity() {
             }
         }
 
+
         dataSet.valueFormatter = countFormatter
 
         pieChart.setDrawEntryLabels(true)
