@@ -124,7 +124,6 @@ class ComplaintAdapter(
                         Log.d("Notification", "Retrieved FCM Token: $fcmToken")
                         Log.d("Notification", "Retrieved Email: $studentEmail")
 
-                        // 🔥 Send Push Notification
                         if (fcmToken.isNotEmpty() && fcmToken.length > 50) {
                             sendFCMNotification(fcmToken, complaintTitle)
                         } else {
@@ -173,10 +172,10 @@ class ComplaintAdapter(
         val notificationData = JSONObject().apply {
             put("message", JSONObject().apply {
                 put("token", fcmToken)
-                put("data", JSONObject().apply {  // Use "data" instead of "notification"
+                put("data", JSONObject().apply {
                     put("title", "Complaint Resolved")
                     put("body", "Your complaint '$complaintTitle' has been resolved.")
-                    put("click_action", "OPEN_ACTIVITY") // Custom action
+                    put("click_action", "OPEN_ACTIVITY")
                 })
             })
         }

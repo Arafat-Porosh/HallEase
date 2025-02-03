@@ -21,6 +21,7 @@ class RoomRequestAdapter(
         val tvStatus: TextView = itemView.findViewById(R.id.tv_status)
         val btnAccept: Button = itemView.findViewById(R.id.btn_accept)
         val btnReject: Button = itemView.findViewById(R.id.btn_reject)
+        val tvSubmittedBy: TextView = itemView.findViewById(R.id.tv_submitted_by_ID)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomRequestViewHolder {
@@ -35,6 +36,7 @@ class RoomRequestAdapter(
         holder.tvRoomNumber.text = "Room No: ${request.room}"
         holder.tvStudentIds.text = request.students.joinToString("\n") { "ID: $it" }
         holder.tvStatus.text = request.status
+        holder.tvSubmittedBy.text = "${request.submittedBy}"
 
         when (request.status) {
             "Pending" -> {

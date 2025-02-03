@@ -37,8 +37,11 @@ class complaintHistory : AppCompatActivity() {
                         complaintsList.add(complaint)
                     }
                 }
+
                 if (complaintsList.isEmpty()) {
                     Toast.makeText(this@complaintHistory, "No complaints found.", Toast.LENGTH_SHORT).show()
+                } else {
+                    complaintsList.sortWith(compareBy { it.status != "Pending" })
                 }
                 complaintsAdapter.notifyDataSetChanged()
             }
@@ -48,6 +51,7 @@ class complaintHistory : AppCompatActivity() {
             }
         })
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()

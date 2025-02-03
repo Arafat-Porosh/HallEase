@@ -20,7 +20,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-
     private fun sendNotification(title: String, messageBody: String) {
         val intent = Intent(this, stuDashboard::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

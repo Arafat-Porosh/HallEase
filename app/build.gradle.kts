@@ -14,6 +14,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+//        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -42,11 +43,15 @@ android {
 
     packaging {
         resources {
-            excludes += "META-INF/INDEX.LIST"
             excludes += "META-INF/DEPENDENCIES"
             excludes += "META-INF/LICENSE"
             excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE.txt"
+            excludes += "META-INF/NOTICE"
             excludes += "META-INF/NOTICE.md"
+            excludes += "META-INF/NOTICE.txt"
+            excludes += "META-INF/INDEX.LIST"
+            excludes += "META-INF/services/javax.annotation.processing.Processor"
         }
     }
 
@@ -57,6 +62,7 @@ android {
 
 
 dependencies {
+
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -65,11 +71,10 @@ dependencies {
     implementation ("com.sun.mail:android-activation:1.6.7")
     implementation ("com.google.auth:google-auth-library-oauth2-http:1.22.0")
 
+    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
     implementation("androidx.activity:activity-compose:1.9.3")
-    // Remove the following line
     implementation ("com.airbnb.android:lottie:6.1.0")
     // implementation ("com.android.support:appcompat-v7:28.0.0")
-    implementation ("com.google.android.material:material:1.9.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation ("androidx.appcompat:appcompat:1.6.1")
@@ -86,4 +91,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }

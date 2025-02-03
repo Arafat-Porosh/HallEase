@@ -3,6 +3,7 @@ package com.arafatporosh.hallmanagement.admincomplaints
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,7 @@ class ComplaintActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_complaint)
-
+        val summarybtn = findViewById<Button>(R.id.summaryButton)
         recyclerView = findViewById(R.id.recyclerViewComplaints)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -29,6 +30,12 @@ class ComplaintActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         fetchComplaintsFromFirebase()
+
+        summarybtn.setOnClickListener {
+            val intent = Intent(this, ComplaintCategoryChartActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun fetchComplaintsFromFirebase() {
@@ -39,10 +46,12 @@ class ComplaintActivity : AppCompatActivity() {
                 for (complaintSnapshot in dataSnapshot.children) {
                     val complaint = complaintSnapshot.getValue(Complaints::class.java)
                     if (complaint != null) {
-                        Log.d("ComplaintActivity", "Loaded complaint: ${complaint.heading}, status: ${complaint.status}")
                         complaintsList.add(complaint)
                     }
                 }
+
+                complaintsList.sortWith(compareBy { it.status != "Pending" })
+
                 adapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(this, "No complaints found", Toast.LENGTH_SHORT).show()
@@ -51,6 +60,7 @@ class ComplaintActivity : AppCompatActivity() {
             Toast.makeText(this, "Failed to load complaints: ${it.message}", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class RoomApply : AppCompatActivity() {
@@ -97,49 +98,74 @@ class RoomApply : AppCompatActivity() {
             return
         }
 
-        applicationsRef.orderByChild("students").get()
-            .addOnSuccessListener { snapshot ->
-                var hasPendingApplication = false
-                var hasAcceptedApplication = false
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            Toast.makeText(this, "User authentication error. Please log in again.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-                if (snapshot.exists()) {
-                    for (application in snapshot.children) {
-                        val applicationStudents = application.child("students").value as? List<*>
-                        val status = application.child("status").value.toString()
+        val userUID = currentUser.uid
+        val usersRef = firebaseDatabase.getReference("users").child(userUID)
 
-                        if (applicationStudents != null && applicationStudents.any { it in studentIds }) {
-                            if (status == "Accepted") {
-                                hasAcceptedApplication = true
+        usersRef.get().addOnSuccessListener { userSnapshot ->
+            if (!userSnapshot.exists()) {
+                Toast.makeText(this, "User data not found.", Toast.LENGTH_SHORT).show()
+                return@addOnSuccessListener
+            }
+
+            val currentUserStudentID = userSnapshot.child("studentID").value.toString()
+            if (currentUserStudentID.isEmpty()) {
+                Toast.makeText(this, "Student ID not found in database.", Toast.LENGTH_SHORT).show()
+                return@addOnSuccessListener
+            }
+
+            applicationsRef.orderByChild("students").get()
+                .addOnSuccessListener { snapshot ->
+                    var hasAcceptedApplication = false
+
+                    if (snapshot.exists()) {
+                        for (application in snapshot.children) {
+                            val applicationStudents = application.child("students").value as? List<*>
+                            val status = application.child("status").value.toString()
+
+                            if (applicationStudents != null && applicationStudents.any { it in studentIds }) {
+                                if (status == "Accepted") {
+                                    hasAcceptedApplication = true
+                                }
                             }
                         }
                     }
-                }
 
-                when {
-                    hasAcceptedApplication -> {
-                        Toast.makeText(this, "One or more students have already been allotted to a room.", Toast.LENGTH_LONG).show()
-                    }
-                    else -> {
-                        val applicationData = mapOf(
-                            "room" to selectedRoom,
-                            "students" to studentIds,
-                            "status" to "Pending"
-                        )
-                        applicationsRef.push().setValue(applicationData)
-                            .addOnSuccessListener {
-                                Toast.makeText(this, "Application submitted successfully", Toast.LENGTH_SHORT).show()
-                                clearFields()
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(this, "Failed to submit application", Toast.LENGTH_SHORT).show()
-                            }
+                    when {
+                        hasAcceptedApplication -> {
+                            Toast.makeText(this, "One or more students have already been allotted to a room.", Toast.LENGTH_LONG).show()
+                        }
+                        else -> {
+                            val applicationData = mapOf(
+                                "room" to selectedRoom,
+                                "students" to studentIds,
+                                "status" to "Pending",
+                                "submittedBy" to currentUserStudentID // Store submitter's student ID
+                            )
+                            applicationsRef.push().setValue(applicationData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Application submitted successfully", Toast.LENGTH_SHORT).show()
+                                    clearFields()
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this, "Failed to submit application", Toast.LENGTH_SHORT).show()
+                                }
+                        }
                     }
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Error checking application status: ${it.message}", Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error checking application status: ${it.message}", Toast.LENGTH_SHORT).show()
+                }
+        }.addOnFailureListener {
+            Toast.makeText(this, "Failed to fetch student ID.", Toast.LENGTH_SHORT).show()
+        }
     }
+
 
 
 
